@@ -32,7 +32,7 @@ h2{
     font-size: 50px;
     padding-top: 50px;
     text-align: center;
-    color: white;
+    color: whitesmoke;
     margin: 0 0 20px;
 }
 
@@ -69,15 +69,15 @@ h2{
 }
 
 .form-control.success input {
-    border-color: var(--succes-color);
+    border-color: var(white);
 }
 
 .form-control.error input {
-    border-color: var(--error-color);    
+    border-color: var(white);    
 }
 
 .form-control small{
-    color: var(--error-color);
+    color: var(red);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -86,6 +86,8 @@ h2{
 
 .form-control.error small{
     visibility: visible;
+    color: red;
+
 }
 .form button {
     cursor: pointer;
@@ -100,15 +102,12 @@ h2{
     width:100%;
 }
 </style>
-<body background="images/5.jfif"style="background-position: center; background-repeat:no-repeat;background-size: cover;">
+<body background="./5.jfif"style="background-position: center; background-repeat:no-repeat;background-size: cover;">
     <div class="text-box" style="font-family:'Quicksand', sans-serif; color: whitesmoke; font-size: 20px;">
         <nav>
             <img src="images/logo.png">
             <h1> ANOKHA TECH-FEST 2023 REGISTRATION</h1>
-             <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./signup.html">Register</a></li>
-             </ul>
+             
         </nav>
     </div>
     <div class="container">
@@ -118,6 +117,18 @@ h2{
                 <input type="text" id="username" placeholder="Enter Username">
                 <small>Error Message</small>
             </div>
+
+            <div class="form-control">
+                <select class="opt" name="acadyear" id="year" required="" fdprocessedid="jxcmh" style="width: 200 px; height: 45px;
+                border-radius: 5px;">
+                    <option value="acad">Academic year</option>
+                    <option value="1">2022-2026</option>
+                    <option value="2">2021-2025</option>
+                    <option value="3">2020-2024</option>
+                    <option value="4">2019-2023</option>
+                  </select>
+                  <div><br><br>
+
             <div class="form-control">
                 <input type="text" id="email" placeholder="Enter email">
                 <small>Error Message</small>
@@ -130,6 +141,10 @@ h2{
                 <input type="password" id="password2" placeholder="Enter password again">
                 <small>Error Message</small>
             </div>
+            <div style="margin-left: 0px; margin-bottom: 0px; margin-right: 0px;">
+                <input type="checkbox" id="terms" name="termscon" value="tandc" style="width: 20px;" required="">
+                <label style="font-family: 'Quicksand', sans-serif;margin-bottom: 0px;margin-right: 0px;font-weight: bold;color: whitesmoke;">I agree to the Terms and Conditions.</label>
+              </div>
             <button >Submit</button>
                 </script>
         </form>
@@ -228,11 +243,10 @@ form.addEventListener('submit',function(e) {
     var check5 = checkPasswordMatch(password, password2);
 
     if (check2 == true && check3 == true && check4 == true && check5 == true) {
-        window.location.href = "file:///C:/Users/Sanjai%20Prashad/Desktop/html/anokha/Anokha%202023/index.html";
+        window.location.href = "file:///C:/Users/Sanjai%20Prashad/Desktop/anokha/index.html";
     }
 });
     </script>
 </body>
 </head>
 </html>
-
