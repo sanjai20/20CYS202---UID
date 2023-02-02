@@ -1,262 +1,253 @@
-/*
-@Author: D.Sanjai Prashad
-@Date: 15 - JAN - 2023
-@Description: Anokha website (index page)
-*/
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/fev.jfif">
+    <link rel="icon" href=".\images\fev.jfif">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <title>REGISTERATION</title>
-
-<style>
-*{
-    box-sizing: border-box;
-}
-  
-body{
-
-    background-color: #f9fafb;
-    font-family: 'Open Sans', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-
-.container{
-    background-color:transparent;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    width: 400px;
-}
-
-h2{
-    font-size: 50px;
-    padding-top: 50px;
-    text-align: center;
-    color: whitesmoke;
-    margin: 0 0 20px;
-}
-
-.form{
-    padding: 30px 40px;
-}
-
-.form-control{
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    position: relative;
-}
-
-.form-control label{
-    color:#777;
-    display: block;
-    margin-bottom: 5px; 
-}
- 
-.form-control input
-{
-    border: 2px solid #f0f0f0;
-    border-radius: 4px;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;   
-}
-
-.form-control input:focus{
-    outline: 0;
-    border-color: #777;
-
-}
-
-.form-control.success input {
-    border-color: var(white);
-}
-
-.form-control.error input {
-    border-color: var(white);    
-}
-
-.form-control small{
-    color: var(red);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    visibility: hidden;
-}
-
-.form-control.error small{
-    visibility: visible;
-    color: red;
-
-}
-.form button {
-    cursor: pointer;
-    background-color: #3498db;
-    border: 2px solid #3498db;
-    border-radius: 4px;
-    color: #fff;
-    display: block;
-    padding: 10px;
-    font-size: 16px;
-    margin-top:20px;
-    width:100%;
-}
-</style></head>
-<body background="./images/5.jfif" style="background-position: center; background-repeat:no-repeat;background-size: cover;">
-    <div class="text-box" style="font-family:'Quicksand', sans-serif; color: whitesmoke; font-size: 20px;">
-        <nav>
-            <img src="images/logo.png">
-            <h1> ANOKHA TECH-FEST 2023 REGISTRATION</h1>
-             
-        </nav>
-    </div>
-    <div class="container">
-        <form id="form" class="form" style="font-family: 'Quicksand', sans-serif;">
-            <h2 style="font-family: 'Quicksand', sans-serif;">REGISTER</h2>
-            <div class="form-control">
-                <input type="text" id="username" placeholder="Enter Username">
-                <small>Error Message</small>
-            </div>
-
-            <div class="form-control">
-                <select class="opt" name="acadyear" id="year" required="" fdprocessedid="jxcmh" style="width: 200 px; height: 45px;
-                border-radius: 5px;">
-                    <option value="acad">Academic year</option>
-                    <option value="1">2022-2026</option>
-                    <option value="2">2021-2025</option>
-                    <option value="3">2020-2024</option>
-                    <option value="4">2019-2023</option>
-                  </select>
-                  <div><br><br>
-
-            <div class="form-control">
-                <input type="text" id="email" placeholder="Enter email">
-                <small>Error Message</small>
-            </div>
-            <div class="form-control">
-                <input type="password" id="password" placeholder="Enter password">
-                <small>Error Message</small>
-            </div>
-            <div class="form-control">
-                <input type="password" id="password2" placeholder="Enter password again">
-                <small>Error Message</small>
-            </div>
-            <div style="margin-left: 0px; margin-bottom: 0px; margin-right: 0px;">
-                <input type="checkbox" id="terms" name="termscon" value="tandc" style="width: 20px;" required="">
-                <label style="font-family: 'Quicksand', sans-serif;margin-bottom: 0px;margin-right: 0px;font-weight: bold;color: whitesmoke;">I agree to the Terms and Conditions.</label>
-              </div>
-            <button >Submit</button>
-                </script>
-        </form>
-    </div>
-    
-
-    <script>
-    const form = document.getElementById('form');
-    const username = document.getElementById('username');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const password2 = document.getElementById('password2');
-
-//Show input error messages
-function showError(input, message) {
-    const formControl = input.parentElement;
-    formControl.className = 'form-control error';
-    const small = formControl.querySelector('small');
-    small.innerText = message;
-}
-
-//show success colour
-function showSucces(input) {
-    const formControl = input.parentElement;
-    formControl.className = 'form-control success';
-}
-
-//check email is valid
-function checkEmail(input) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(re.test(input.value.trim())) {
-        showSucces(input)
-        return true
-    }else {
-        showError(input,'Email is not invalid');
-    }
-}
-
-
-//checkRequired fields
-function checkRequired(inputArr) {
-    inputArr.forEach(function(input){
-        if(input.value.trim() === ''){
-            showError(input,`${getFieldName(input)} is required`)
-        }else {
-            showSucces(input);
-            return true
+    <title>REGISTRATION</title><style>
+        *{
+            box-sizing: border-box;
         }
-
-    });
-}
-
-
-//check input Length
-function checkLength(input, min ,max) {
-    if(input.value.length < min) {
-        showError(input, `${getFieldName(input)} must be at least ${min} characters`);
-    }else if(input.value.length > max) {
-        showError(input, `${getFieldName(input)} must be les than ${max} characters`);
-    }else {
-        showSucces(input);
-        return true
-    }
-}
-
-//get FieldName
-function getFieldName(input) {
-    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-}
-
-// check passwords match
-function checkPasswordMatch(input1, input2) {
-    if(input1.value !== input2.value) {
-        showError(input2, 'Passwords do not match');
-    }
-    else {
-        return true
-    }
-}
-
-
-//Event Listeners
-form.addEventListener('submit',function(e) {
-    e.preventDefault();
-
-    checkRequired([username, email, password, password2]);
-    checkLength(username,3,15);
-    checkLength(password,6,25);
-    checkEmail(email);
-    checkPasswordMatch(password, password2);
-
-    var check1 = checkRequired([username, email, password, password2]);
-    var check2 = checkLength(username,3,15);
-    var check3 = checkLength(password,6,25);
-    var check4 = checkEmail(email);
-    var check5 = checkPasswordMatch(password, password2);
-
-    if (check2 == true && check3 == true && check4 == true && check5 == true) {
-        window.location.href = "file:///C:/Users/Sanjai%20Prashad/Desktop/anokha/index.html";
-    }
-});
-    </script>
-</body>
+          
+        body{
+        
+            background-color: #f9fafb;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        
+        .container{
+            background-color:transparent;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            width: 400px;
+        }
+        
+        h2{
+            font-size: 50px;
+            padding-top: 50px;
+            text-align: center;
+            color: whitesmoke;
+            margin: 0 0 20px;
+        }
+        
+        .form{
+            padding: 30px 40px;
+        }
+        
+        .form-control{
+            margin-bottom: 10px;
+            padding-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-control label{
+            color:#777;
+            display: block;
+            margin-bottom: 5px; 
+        }
+         
+        .form-control input
+        {
+            border: 2px solid #f0f0f0;
+            border-radius: 4px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;   
+        }
+        
+        .form-control input:focus{
+            outline: 0;
+            border-color: #777;
+        
+        }
+        
+        .form-control.success input {
+            border-color: var(white);
+        }
+        
+        .form-control.error input {
+            border-color: var(white);    
+        }
+        
+        .form-control small{
+            color: var(red);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        
+        .form-control.error small{
+            visibility: visible;
+            color: red;
+        
+        }
+        .form button {
+            cursor: pointer;
+            background-color: #3498db;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            color: #fff;
+            display: block;
+            padding: 10px;
+            font-size: 16px;
+            margin-top:20px;
+            width:100%;
+        }
+        </style>
+        </head>
+        <body background=".\images\5.jfif" style="background-position: center; background-repeat:no-repeat;background-size: cover;">
+            <div class="text-box" style="font-family:'Quicksand', sans-serif; color: whitesmoke; font-size: 20px;">
+                <nav>
+                    <img src="images/logo.png">
+                    <h1> ANOKHA TECH-FEST 2023 REGISTRATION</h1>
+                     
+                </nav>
+            </div>
+            <div class="container">
+                <form id="form" class="form" style="font-family: 'Quicksand', sans-serif;">
+                    <h2 style="font-family: 'Quicksand', sans-serif;">REGISTER</h2>
+                    <div class="form-control">
+                        <input type="text" id="username" placeholder="Enter Username">
+                        <small>Error Message</small>
+                    </div>
+        
+                    <div class="form-control">
+                        <select class="opt" name="acadyear" id="year" required="" fdprocessedid="jxcmh" style="width: 200 px; height: 45px;
+                        border-radius: 5px;">
+                            <option value="acad">Academic year</option>
+                            <option value="1">2022-2026</option>
+                            <option value="2">2021-2025</option>
+                            <option value="3">2020-2024</option>
+                            <option value="4">2019-2023</option>
+                          </select>
+                          <div><br><br>
+        
+                    <div class="form-control">
+                        <input type="text" id="email" placeholder="Enter email">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" id="password" placeholder="Enter password">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="password" id="password2" placeholder="Enter password again">
+                        <small>Error Message</small>
+                    </div>
+                    <div style="margin-left: 0px; margin-bottom: 0px; margin-right: 0px;">
+                        <input type="checkbox" id="terms" name="termscon" value="tandc" style="width: 20px;" required="">
+                        <label style="font-family: 'Quicksand', sans-serif;margin-bottom: 0px;margin-right: 0px;font-weight: bold;color: whitesmoke;">I agree to the Terms and Conditions.</label>
+                      </div>
+                    <a href="index.html">
+                    <button>Submit</button></a>
+                        </script>
+                </form>
+            </div>
+            
+        
+            <script>
+            const form = document.getElementById('form');
+            const username = document.getElementById('username');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const password2 = document.getElementById('password2');
+        
+        //Show input error messages
+        function showError(input, message) {
+            const formControl = input.parentElement;
+            formControl.className = 'form-control error';
+            const small = formControl.querySelector('small');
+            small.innerText = message;
+        }
+        
+        //show success colour
+        function showSucces(input) {
+            const formControl = input.parentElement;
+            formControl.className = 'form-control success';
+        }
+        
+        //check email is valid
+        function checkEmail(input) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(re.test(input.value.trim())) {
+                showSucces(input)
+                return true
+            }else {
+                showError(input,'Email is not invalid');
+            }
+        }
+        
+        
+        //checkRequired fields
+        function checkRequired(inputArr) {
+            inputArr.forEach(function(input){
+                if(input.value.trim() === ''){
+                    showError(input,`${getFieldName(input)} is required`)
+                }else {
+                    showSucces(input);
+                    return true
+                }
+        
+            });
+        }
+        
+        
+        //check input Length
+        function checkLength(input, min ,max) {
+            if(input.value.length < min) {
+                showError(input, `${getFieldName(input)} must be at least ${min} characters`);
+            }else if(input.value.length > max) {
+                showError(input, `${getFieldName(input)} must be les than ${max} characters`);
+            }else {
+                showSucces(input);
+                return true
+            }
+        }
+        
+        //get FieldName
+        function getFieldName(input) {
+            return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+        }
+        
+        // check passwords match
+        function checkPasswordMatch(input1, input2) {
+            if(input1.value !== input2.value) {
+                showError(input2, 'Passwords do not match');
+            }
+            else {
+                return true
+            }
+        }
+        
+        
+        //Event Listeners
+        form.addEventListener('submit',function(e) {
+            e.preventDefault();
+        
+            checkRequired([username, email, password, password2]);
+            checkLength(username,3,15);
+            checkLength(password,6,25);
+            checkEmail(email);
+            checkPasswordMatch(password, password2);
+        
+            var check1 = checkRequired([username, email, password, password2]);
+            var check2 = checkLength(username,3,15);
+            var check3 = checkLength(password,6,25);
+            var check4 = checkEmail(email);
+            var check5 = checkPasswordMatch(password, password2);
+        
+            if (check2 == true && check3 == true && check4 == true && check5 == true) {
+                window.location.href = "file:///C:/Users/Sanjai%20Prashad/Desktop/anokha/index.html";
+            }
+        });
+            </script>
+        </body>
 </html>
 
