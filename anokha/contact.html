@@ -136,6 +136,53 @@ button{
 .container form #button:hover{
     opacity: 0.7;
 }
+
+footer{
+    position: relative;
+    top: 25px;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: 170px;
+    width: 100%;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.footer-content{
+    position: relative;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+p{
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    color: whitesmoke;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #cacdd2;
+}
+
+.footer-bottom p{
+    float: left;
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+
 </style>
 <body background=".\images\5.jfif"style="background-position: center; background-repeat:no-repeat;background-size: cover;">
     <div class="container">
@@ -148,26 +195,30 @@ button{
             <h4>Type Your Message Here...</h4>
             <textarea required></textarea>
             <button type="submit" id="submitForm">SEND</button>
-            <script>
-                <button onclick="submitForm()">Submit</button>\
-                function submitForm() {
-                var firstName = document.getElementById("firstName").value;
-                var lastName = document.getElementById("lastName").value;
-                var email = document.getElementById("email").value;
-                var mobile = document.getElementById("mobile").value;
-                var message = document.querySelector("textarea").value;
-                if (!firstName || !lastName || !email || !mobile || !message) {
-                    alert("Please fill out all the fields");
-                    return false;
-                }
-                else{
-                alert("Form submitted successfully");
-                }
-}
-</script>
-                   
-                 
         </form>
+            <script>
+                const form = document.querySelector("form");
+                
+                form.addEventListener("submit", function(event) {
+                  event.preventDefault();
+              
+                  const firstName = document.querySelector("#firstName").value;
+                  const lastName = document.querySelector("#lastName").value;
+                  const email = document.querySelector("#email").value;
+                  const mobile = document.querySelector("#mobile").value;
+              
+                  if (firstName && lastName && email && mobile) {
+                    alert("Message sent successfully");
+                  } else {
+                    alert("Please fill in all the required fields");
+                  }
+                });
+              </script>  
     </div>
+    <footer>
+                <div class="footer-content">
+                    <p>@Copyright &copy; 2022-2023 Anokha - D. Sanjai Prashad <br> II B.Tech CSE (CYS)<br> Part of 20CYS202 - User Interface Design <br> Amrita Vishwa Vidyapeetham, Coimbatore Amrita</p>
+                </div>
+            </footer>
 </body>
 </html>
