@@ -107,6 +107,8 @@ h2{
   <form onsubmit="return validateForm()">
     <input type="text" id="username" placeholder="Enter Username" required>
     <br>
+    <input type="text" id="Rollno" name="Rollno" pattern="[a-zA-Z0-9]+" placeholder="Enter Rollno" required>
+    <br>
     <div>
       Gender:
       <label for="male">Male</label>
@@ -145,6 +147,7 @@ h2{
   <script>
   function validateForm() {
     var username = document.getElementById("username").value;
+    var Rollno = document.getElementById("Rollno").value;
     var collageName = document.getElementById("collage name").value;
     var email = document.getElementById("email").value;
     var phone = document.getElementById("phone").value;
@@ -154,6 +157,11 @@ h2{
     
     if (username == "") {
       alert("Username must be filled out");
+      return false;
+    }
+    
+    if (Rollno == "") {
+      alert("Rollno must be filled out");
       return false;
     }
     
