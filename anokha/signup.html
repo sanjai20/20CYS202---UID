@@ -1,255 +1,203 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href=".\images\fev.jfif">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <title>REGISTRATION</title>
-    
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-          
-        body{
-        
-            background-color: #f9fafb;
-            font-family: 'Open Sans', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        
-        
-        .container{
-            background-color:transparent;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            width: 400px;
-        }
-        
-        h2{
-            font-size: 50px;
-            padding-top: 50px;
-            text-align: center;
-            color: whitesmoke;
-            margin: 0 0 20px;
-        }
-        
-        .form{
-            padding: 30px 40px;
-        }
-        
-        .form-control{
-            margin-bottom: 10px;
-            padding-bottom: 20px;
-            position: relative;
-        }
-        
-        .form-control label{
-            color:#777;
-            display: block;
-            margin-bottom: 5px; 
-        }
-         
-        .form-control input
-        {
-            border: 2px solid #f0f0f0;
-            border-radius: 4px;
-            display: block;
-            width: 100%;
-            padding: 10px;
-            font-size: 14px;   
-        }
-        
-        .form-control input:focus{
-            outline: 0;
-            border-color: #777;
-        
-        }
-        
-        .form-control.success input {
-            border-color: var(white);
-        }
-        
-        .form-control.error input {
-            border-color: var(white);    
-        }
-        
-        .form-control small{
-            color: var(red);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            visibility: hidden;
-        }
-        
-        .form-control.error small{
-            visibility: visible;
-            color: red;
-        
-        }
-        .form button {
-            cursor: pointer;
-            background-color: #3498db;
-            border: 2px solid #3498db;
-            border-radius: 4px;
-            color: #fff;
-            display: block;
-            padding: 10px;
-            font-size: 16px;
-            margin-top:20px;
-            width:100%;
-        }
-        </style>
-        </head>
-        <body background=".\images\5.jfif" style="background-position: center; background-repeat:no-repeat;background-size: cover;">
-            <div class="text-box" style="font-family:'Quicksand', sans-serif; color: whitesmoke; font-size: 20px;">
-                <nav>
-                    <img src="images/logo.png">
-                    <h1> ANOKHA TECH-FEST 2023 REGISTRATION</h1>
-                     
-                </nav>
-            </div>
-            <div class="container">
-                <form id="form" class="form" style="font-family: 'Quicksand', sans-serif;">
-                    <h2 style="font-family: 'Quicksand', sans-serif;">REGISTER</h2>
-                    <div class="form-control">
-                        <input type="text" id="username" placeholder="Enter Username">
-                        <small>Error Message</small>
-                    </div>
-        
-                    <div class="form-control">
-                        <select class="opt" name="acadyear" id="year" required="" fdprocessedid="jxcmh" style="width: 200 px; height: 45px;
-                        border-radius: 5px;">
-                            <option value="acad">Academic year</option>
-                            <option value="1">2022-2026</option>
-                            <option value="2">2021-2025</option>
-                            <option value="3">2020-2024</option>
-                            <option value="4">2019-2023</option>
-                          </select>
-                          <div><br><br>
-        
-                    <div class="form-control">
-                        <input type="text" id="email" placeholder="Enter email">
-                        <small>Error Message</small>
-                    </div>
-                    <div class="form-control">
-                        <input type="password" id="password" placeholder="Enter password">
-                        <small>Error Message</small>
-                    </div>
-                    <div class="form-control">
-                        <input type="password" id="password2" placeholder="Enter password again">
-                        <small>Error Message</small>
-                    </div>
-                    <div style="margin-left: 0px; margin-bottom: 0px; margin-right: 0px;">
-                        <input type="checkbox" id="terms" name="termscon" value="tandc" style="width: 20px;" required="">
-                        <label style="font-family: 'Quicksand', sans-serif;margin-bottom: 0px;margin-right: 0px;font-weight: bold;color: whitesmoke;">I agree to the Terms and Conditions.</label>
-                      </div>
-                    <a href="index.html">
-                    <button>Submit</button></a>
-                        </script>
-                </form>
-            </div>
-            
-        
-            <script>
-            const form = document.getElementById('form');
-            const username = document.getElementById('username');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const password2 = document.getElementById('password2');
-        
-        //Show input error messages
-        function showError(input, message) {
-            const formControl = input.parentElement;
-            formControl.className = 'form-control error';
-            const small = formControl.querySelector('small');
-            small.innerText = message;
-        }
-        
-        //show success colour
-        function showSucces(input) {
-            const formControl = input.parentElement;
-            formControl.className = 'form-control success';
-        }
-        
-        //check email is valid
-        function checkEmail(input) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if(re.test(input.value.trim())) {
-                showSucces(input)
-                return true
-            }else {
-                showError(input,'Email is not invalid');
-            }
-        }
-        
-        
-        //checkRequired fields
-        function checkRequired(inputArr) {
-            inputArr.forEach(function(input){
-                if(input.value.trim() === ''){
-                    showError(input,`${getFieldName(input)} is required`)
-                }else {
-                    showSucces(input);
-                    return true
-                }
-        
-            });
-        }
-        
-        
-        //check input Length
-        function checkLength(input, min ,max) {
-            if(input.value.length < min) {
-                showError(input, `${getFieldName(input)} must be at least ${min} characters`);
-            }else if(input.value.length > max) {
-                showError(input, `${getFieldName(input)} must be les than ${max} characters`);
-            }else {
-                showSucces(input);
-                return true
-            }
-        }
-        
-        //get FieldName
-        function getFieldName(input) {
-            return input.id.charAt(0).toUpperCase() + input.id.slice(1);
-        }
-        
-        // check passwords match
-        function checkPasswordMatch(input1, input2) {
-            if(input1.value !== input2.value) {
-                showError(input2, 'Passwords do not match');
-            }
-            else {
-                return true
-            }
-        }
-        
-        
-        //Event Listeners
-        form.addEventListener('submit',function(e) {
-            e.preventDefault();
-        
-            checkRequired([username, email, password, password2]);
-            checkLength(username,3,15);
-            checkLength(password,6,25);
-            checkEmail(email);
-            checkPasswordMatch(password, password2);
-        
-            var check1 = checkRequired([username, email, password, password2]);
-            var check2 = checkLength(username,3,15);
-            var check3 = checkLength(password,6,25);
-            var check4 = checkEmail(email);
-            var check5 = checkPasswordMatch(password, password2);
-        
-            if (check2 == true && check3 == true && check4 == true && check5 == true) {
-                window.location.href = "index.html";
-            }
-        });
-            </script>
-        </body>
-</html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href=".\images\fev.jfif">
+  <title>REGISTRATION</title>
+  <style>
+   *{
+    margin: 0;
+    padding: 0;
+    font-family:'Quicksand', sans-serif;
+    box-sizing:border-box ;}
 
+.hero{
+    height: 266vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(https://klik.solutions/wp-content/uploads/2020/12/The-Dark-Web-post.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+div{
+  color: #fff;
+  font-family:'Quicksand', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1px;
+  margin-top: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 300px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+footer{
+    position: relative;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: 150px;
+    width: 100%;
+    padding-top: 20px;
+    color: #fff;
+}
+
+.footer-content{
+    position: relative;
+    top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-bottom p{
+  float: left;
+  font-size: 14px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+}
+h2{
+  font-size: 30px;
+  padding-top: 50px;
+  text-align: center;
+  color: whitesmoke;
+  margin: 0 0 20px;
+  }
+  </style>
+</head>
+<body background=".\images\5.jfif" style="background-position: center; background-repeat:no-repeat;background-size: cover;">
+    <div class="text-box" style="font-family:'Quicksand', sans-serif; color: whitesmoke; font-size: 20px;">
+        <nav>
+            <img src="images/logo.png" style="padding-left: 550px; margin-top: 50px;">
+            <h1>ANOKHA TECH-FEST 2023 REGISTRATION</h1>
+             
+        </nav>
+    </div>
+  <h2 style="font-family: 'Quicksand', sans-serif; padding-top: 50px;">REGISTER</h2>
+  <form onsubmit="return validateForm()">
+    <input type="text" id="username" placeholder="Enter Username" required>
+    <br>
+    <div>
+      Gender:
+      <label for="male">Male</label>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="female">Female</label>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="other">Other</label>
+      <input type="radio" id="other" name="gender" value="other">
+    </div>
+    <br>
+    <select id="department" placeholder="Department">
+      <option value="">Department</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+    </select>
+    <br>
+    <input type="text" id="collage name" placeholder="Enter collage name" required>
+    <br>
+    <select id="Academic year" >
+      <option value="">Acadamic year</option>
+      <option value="2020-2024">2020-2024</option>
+      <option value="2021-2025">2021-2025</option>
+      <option value="2022-2026">2021-2025</option>
+    </select>
+    <br>
+    <input type="email" id="email" placeholder="Enter email"required>
+    <br>
+    <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="Enter phone-no"required>
+    <br>
+    <input type="text" id="city" placeholder="Enter city" required>
+    <br>
+    <button type="submit">REGISTER</button>
+  </form>
+  <script>
+  function validateForm() {
+    var username = document.getElementById("username").value;
+    var collageName = document.getElementById("collage name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    var city = document.getElementById("city").value;
+    var department = document.getElementById("department").value;
+    var academicYear = document.getElementById("Academic year").value;
+    
+    if (username == "") {
+      alert("Username must be filled out");
+      return false;
+    }
+    
+    if (collageName == "") {
+      alert("College name must be filled out");
+      return false;
+    }
+  
+  if (email == "") {
+    alert("Email must be filled out");
+    return false;
+  }
+  
+  if (phone == "") {
+    alert("Phone must be filled out");
+    return false;
+  }
+  
+  if (city == "") {
+    alert("City must be filled out");
+    return false;
+  }
+  
+  if (department == "") {
+    alert("Department must be selected");
+    return false;
+  }
+  
+  if (academicYear == "") {
+    alert("Academic year must be selected");
+    return false;
+  }
+  
+  // redirect to index.html
+  window.location.href = "index.html";
+  
+  return false;
+}
+  </script>
+</script>
+  <footer>
+    <div class="footer-content">
+        <p>@Copyright &copy; 2022-2023 Anokha - D. Sanjai Prashad <br> II B.Tech CSE (CYS)<br> Part of 20CYS202 - User Interface Design <br> Amrita Vishwa Vidyapeetham, Coimbatore Amrita</p>
+    </div>
+  </footer>
+</body>
+</html>
